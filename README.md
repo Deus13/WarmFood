@@ -1,6 +1,6 @@
 # Warm Food
 
-Makes MRE autoheat up on first open and gives the player a warming up buff. Meat and fish now to give a warming up buff when still warm from cooking.
+Makes MRE auto heat up on first open and gives the player a warming up buff. Meat and fish now to give a warming up buff when still warm from cooking.
 Also add a multiplier for the calories of meat and fish. For those of you how dont aggree whit the engergy density of the meat ingame.
 
 Everthing customizable in the ModSettings.
