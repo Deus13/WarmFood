@@ -32,13 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\tld\The Long Dark v1.55 48657\tld_Data\Managed\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\The Long Dark v1.55 48657\tld_Data\Managed\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\tld\The Long Dark v1.55 48657\tld_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\The Long Dark v1.55 48657\tld_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="ModSettings">
-      <HintPath>..\..\..\..\tld\The Long Dark v1.55 48657\mods\ModSettings.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\The Long Dark v1.55 48657\mods\ModSettings.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,12 +46,15 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\Games\The Long Dark v1.55 48657\tld_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\tld\The Long Dark v1.55 48657\tld_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\The Long Dark v1.55 48657\tld_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\tld\The Long Dark v1.55 48657\tld_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>..\..\..\..\..\Games\The Long Dark v1.55 48657\tld_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

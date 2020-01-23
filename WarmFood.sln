@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29709.97
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmFood", "WarmFood\WarmFood.csproj", "{A56ED3A0-ECF4-4FAB-A8C2-36AF8FF1E084}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarmFood", "WarmFood.csproj", "{A56ED3A0-ECF4-4FAB-A8C2-36AF8FF1E084}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {442284AA-59B9-49FA-BB9C-A336FD517C29}
+		SolutionGuid = {12E1584B-E3A7-491F-ABBC-F0F67C4F06E4}
 	EndGlobalSection
 EndGlobal

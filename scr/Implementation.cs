@@ -95,7 +95,7 @@ namespace WarmFood
                 gi.m_FoodItem.m_CaloriesTotal *= setting.Fishkcal;
                 gi.m_FoodItem.m_CaloriesRemaining *= setting.Fishkcal;
 
-                if (name.Contains("raw") && setting.MeatHeating)
+                if (name.Contains("cooked") && setting.MeatHeating)
                 {
                     gi.m_FoodItem.m_HeatedWhenCooked = true;
                     gi.m_FoodItem.m_PercentHeatLossPerMinuteIndoors = 1f;
