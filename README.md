@@ -6,10 +6,6 @@ Also add a multiplier for the calories of meat and fish. For those of you how do
 Everthing customizable in the ModSettings.
 
 
-This is a mod for **The Long Dark** 1.56 by Hinterland Games Studio, Inc.
+This is a mod for **The Long Dark** 1.83+ by Hinterland Games Studio, Inc.
 
-
-
-
-
-Requires the [Mod Loader](https://github.com/zeobviouslyfakeacc/ModLoaderInstaller) to run.
+For 1.56 version, please see orignall by Deus13 - https://github.com/Deus13/WarmFood

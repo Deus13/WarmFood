@@ -1,16 +1,14 @@
 ﻿
+using ModSettings;
 using System;
 using System.IO;
 using System.Reflection;
-using JsonModSettings;
-using ModSettings;
+
 
 namespace WarmFood
 {
-    internal class WarmFoodSettings : JsonModSettingsBase<WarmFoodSettings>
+    internal class WarmFoodSettings : JsonModSettings
     {
-
-
         [Section("MRE:")]
         [Name("MRE heating bags")]
         [Description("If turned on, MRE's will heat it self on first openning.")]
@@ -55,46 +53,44 @@ namespace WarmFood
         public float Fishkcal = 1f;
 
 
-
-
-
-        protected override void OnChange(FieldInfo field, object oldValue, object newValue)
+        protected override void OnChange(FieldInfo field, object oldVal, object newVal)
         {
-            base.OnChange(field, oldValue, newValue);
+            RefreshFields();
+        }
 
-            if (field.Name == nameof(MREheating))
+        internal void RefreshFields()
+        {
+            if (MREheating == true)
             {
-                hideMREheating();
+                SetFieldVisible(nameof(MREBuffScale), true);
+                SetFieldVisible(nameof(MREBuffDuration), true);
             }
-            if (field.Name == nameof(MeatHeating))
+            else
             {
-                hideMeatHeating();
+                SetFieldVisible(nameof(MREBuffScale), false);
+                SetFieldVisible(nameof(MREBuffDuration), false);
             }
-            
-            RefreshGUI();
+            if (MeatHeating == true)
+            {
+                SetFieldVisible(nameof(MeatScale), true);
+                SetFieldVisible(nameof(MeatDuration), true);
+            }
+            else
+            {
+                SetFieldVisible(nameof(MeatScale), false);
+                SetFieldVisible(nameof(MeatDuration), false);
+            }
+
         }
-
-        private void hideMREheating()
-        {
-            SetFieldVisible(nameof(MREBuffScale), MREheating);
-            SetFieldVisible(nameof(MREBuffDuration), MREheating);
-            
-        }
-
-        private void hideMeatHeating()
-        {
-            SetFieldVisible(nameof(MeatScale), MeatHeating);
-            SetFieldVisible(nameof(MeatDuration), MeatHeating);
-           
-        }
-
-
-
-
-
+    }
+    internal static class Settings
+    {
+        public static WarmFoodSettings options;
         public static void OnLoad()
         {
-            Instance = JsonModSettingsLoader.Load<WarmFoodSettings>();
+            options = new WarmFoodSettings();
+            options.RefreshFields();
+            options.AddToModSettings("WarmFood Settings");
         }
     }
 }
