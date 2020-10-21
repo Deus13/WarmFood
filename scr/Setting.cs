@@ -1,9 +1,39 @@
 ﻿
+using MelonLoader;
 using ModSettings;
 using System;
 using System.IO;
 using System.Reflection;
+/*
+ * cal notes by ttr
+ * name -> rl per 1kg
+ * in game meat is 800/900 per kg
+ * below are averaged values
 
+GEAR_RawMeatBear -> 1600 (game) => 1.78
+GEAR_RawMeatDeer -> 1160 (venison) => 1.28
+GEAR_RawMeatRabbit -> 1730 (venison) => 3.4 (game is 500cal/kg)
+GEAR_RawMeatWolf -> 1430 => 1.79
+GEAR_RawMeatMoose -> 1000 => 1.12
+GEAR_RawCohoSalmon -> 1780 => 5.91
+GEAR_RawLakeWhiteFish -> 1200 => 3.11
+GEAR_RawRainbowTrout -> 1410 => 3.66
+GEAR_RawSmallMouthBass -> 1280 => 4.2
+
+GEAR_CookedMeatBear
+GEAR_CookedMeatDeer
+GEAR_CookedMeatRabbit
+GEAR_CookedMeatWolf
+GEAR_CookedMeatMoose
+GEAR_CookedCohoSalmon
+GEAR_CookedLakeWhiteFish
+GEAR_CookedRainbowTrout
+GEAR_CookedSmallMouthBass
+
+And bonus of this - in game is 0.5kg and 900
+GEAR_PeanutButter -> 6000 => 3.34
+so it should be 3000 for 0.5kg.
+ */
 
 namespace WarmFood
 {
@@ -42,23 +72,136 @@ namespace WarmFood
         [Slider(0, 5f, 51)]
         public float MeatDuration = 1f;
 
-        [Name("Meat kcal")]
-        [Description("Multimplies the the meat kcal with this nummber.")]
-        [Slider(0, 5f, 51)]
-        public float Meatkcal = 1f;
+        [Section("Calories:")]
 
-        [Name("Fish kcal")]
-        [Description("Multimplies the the meat kcal with this nummber.")]
-        [Slider(0, 5f, 51)]
-        public float Fishkcal = 1f;
+        [Name("Preset")]
+        [Description("Select preset")]
+        [Choice("Vanila", "Real Life (math)", "Real life (loss)", "Custom")]
+        public int preset = 0;
 
+        [Name("Bear")]
+        [Description("Ratio for cal for Bear")]
+        [Slider(0, 6f, 51)]
+        public float calBear = 1f;
 
-        protected override void OnChange(FieldInfo field, object oldVal, object newVal)
+        [Name("Deer")]
+        [Description("Ratio for cal for Deer")]
+        [Slider(0, 6f, 51)]
+        public float calDeer = 1f;
+
+        [Name("Rabbit")]
+        [Description("Ratio for cal for Rabbit")]
+        [Slider(0, 6f, 51)]
+        public float calRabbit = 1f;
+
+        [Name("Moose")]
+        [Description("Ratio for cal for Moose")]
+        [Slider(0, 6f, 51)]
+        public float calMoose = 1f;
+
+        [Name("Wolf")]
+        [Description("Ratio for cal for Wolf")]
+        [Slider(0, 6f, 51)]
+        public float calWolf = 1f;
+
+        [Name("Salmon")]
+        [Description("Ratio for cal for Coho Salmon")]
+        [Slider(0, 6f, 51)]
+        public float calSalmon = 1f;
+
+        [Name("Lake White")]
+        [Description("Ratio for cal for Lake White Fish")]
+        [Slider(0, 6f, 51)]
+        public float calLakeWhite = 1f;
+
+        [Name("Rainbow Trout")]
+        [Description("Ratio for cal for Rainbow Trout")]
+        [Slider(0, 6f, 51)]
+        public float calRainbowTrout = 1f;
+
+        [Name("Smallmouth Bass")]
+        [Description("Ratio for cal for Smallmouth Bass")]
+        [Slider(0, 6f, 51)]
+        public float calSmallmouthBass = 1f;
+
+        [Name("Bonus: Peanut Butter")]
+        [Description("Ratio for cal for Peanut Butter")]
+        [Slider(0, 6f, 51)]
+        public float calPeanutButter = 1f;
+
+        protected override void OnChange(FieldInfo field, object oldValue, object newValue)
         {
-            RefreshFields();
-        }
+            if (field.Name == nameof(preset) && preset != 3)
+            {
+                UsePreset((int)newValue);
+            }
+            else if (
+                (field.Name == nameof(calBear)) ||
+                (field.Name == nameof(calDeer)) ||
+                (field.Name == nameof(calLakeWhite)) ||
+                (field.Name == nameof(calMoose)) || 
+                (field.Name == nameof(calPeanutButter)) ||
+                (field.Name == nameof(calRabbit)) ||
+                (field.Name == nameof(calRainbowTrout)) ||
+                (field.Name == nameof(calSalmon)) ||
+                (field.Name == nameof(calSmallmouthBass)) ||
+                (field.Name == nameof(calWolf))
+                )
 
-        internal void RefreshFields()
+            {
+                 MelonLogger.Log(field.Name + " " + oldValue.ToString() + " " + newValue.ToString());
+               // preset = 3; // Custom
+            }
+            //RefreshFields();
+            // Call this method to make the newly set field values show up in the GUI!
+            RefreshGUI();
+        }
+        private void UsePreset(int preset)
+        {
+            // Ugly code ahead!
+            switch (preset)
+            {
+                case 0:
+                    calBear = 1f;
+                    calDeer = 1f;
+                    calLakeWhite = 1f;
+                    calMoose = 1f;
+                    calRabbit = 1f;
+                    calRainbowTrout = 1f;
+                    calSalmon = 1f;
+                    calSmallmouthBass = 1f;
+                    calWolf = 1f;
+                    calPeanutButter = 1f;
+                    break;
+                case 1:
+                    calBear = 1.78f;
+                    calDeer = 1.28f;
+                    calLakeWhite = 3.11f;
+                    calMoose = 1.12f;
+                    calRabbit = 3.4f;
+                    calRainbowTrout = 3.66f;
+                    calSalmon = 5.91f;
+                    calSmallmouthBass = 4.2f;
+                    calWolf = 1.79f;
+                    calPeanutButter = 3.34f;
+                    break;
+                case 2:
+                    calBear = 1.6f; // reduced
+                    calDeer = 1.20f; // reduced
+                    calLakeWhite = 2.17f; // 70% 
+                    calMoose = 1.12f; // 100%
+                    calRabbit = 1.7f; // 50%
+                    calRainbowTrout = 2.56f; // 70%
+                    calSalmon = 3f; // 50-51%
+                    calSmallmouthBass = 2.94f; // 70%
+                    calWolf = 1.70f; // reduced
+                    calPeanutButter = 3.34f; // 100%
+                    break;
+            }
+
+        }
+    
+    internal void RefreshFields()
         {
             if (MREheating == true)
             {
