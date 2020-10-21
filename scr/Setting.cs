@@ -6,13 +6,12 @@ using System.IO;
 using System.Reflection;
 /*
  * cal notes by ttr
- * name -> rl per 1kg
- * in game meat is 800/900 per kg
+ * name -> real life per 1kg (averaged) => ratio based on game cal/kg
  * below are averaged values
 
 GEAR_RawMeatBear -> 1600 (game) => 1.78
 GEAR_RawMeatDeer -> 1160 (venison) => 1.28
-GEAR_RawMeatRabbit -> 1730 (venison) => 3.4 (game is 500cal/kg)
+GEAR_RawMeatRabbit -> 1730 (venison) => 3.4 
 GEAR_RawMeatWolf -> 1430 => 1.79
 GEAR_RawMeatMoose -> 1000 => 1.12
 GEAR_RawCohoSalmon -> 1780 => 5.91
@@ -30,7 +29,7 @@ GEAR_CookedLakeWhiteFish
 GEAR_CookedRainbowTrout
 GEAR_CookedSmallMouthBass
 
-And bonus of this - in game is 0.5kg and 900
+And bonus of this - in game is 0.5kg and 900cal
 GEAR_PeanutButter -> 6000 => 3.34
 so it should be 3000 for 0.5kg.
  */
@@ -76,56 +75,56 @@ namespace WarmFood
 
         [Name("Preset")]
         [Description("Select preset")]
-        [Choice("Vanila", "Real Life (math)", "Real life (loss)", "Custom")]
+        [Choice("Vanila", "Real Life (math)", "Real life (adjusted)", "Custom")]
         public int preset = 0;
 
         [Name("Bear")]
-        [Description("Ratio for cal for Bear")]
+        [Description("Calories ratio for Bear")]
         [Slider(0, 6f, 51)]
         public float calBear = 1f;
 
         [Name("Deer")]
-        [Description("Ratio for cal for Deer")]
+        [Description("Calories ratio for Deer")]
         [Slider(0, 6f, 51)]
         public float calDeer = 1f;
 
         [Name("Rabbit")]
-        [Description("Ratio for cal for Rabbit")]
+        [Description("Calories ratio for Rabbit")]
         [Slider(0, 6f, 51)]
         public float calRabbit = 1f;
 
         [Name("Moose")]
-        [Description("Ratio for cal for Moose")]
+        [Description("Calories ratio for Moose")]
         [Slider(0, 6f, 51)]
         public float calMoose = 1f;
 
         [Name("Wolf")]
-        [Description("Ratio for cal for Wolf")]
+        [Description("Calories ratio for Wolf")]
         [Slider(0, 6f, 51)]
         public float calWolf = 1f;
 
         [Name("Salmon")]
-        [Description("Ratio for cal for Coho Salmon")]
+        [Description("Calories ratio for Coho Salmon")]
         [Slider(0, 6f, 51)]
         public float calSalmon = 1f;
 
         [Name("Lake White")]
-        [Description("Ratio for cal for Lake White Fish")]
+        [Description("Calories ratio for Lake White Fish")]
         [Slider(0, 6f, 51)]
         public float calLakeWhite = 1f;
 
         [Name("Rainbow Trout")]
-        [Description("Ratio for cal for Rainbow Trout")]
+        [Description("Calories ratio for Rainbow Trout")]
         [Slider(0, 6f, 51)]
         public float calRainbowTrout = 1f;
 
         [Name("Smallmouth Bass")]
-        [Description("Ratio for cal for Smallmouth Bass")]
+        [Description("Calories ratio for Smallmouth Bass")]
         [Slider(0, 6f, 51)]
         public float calSmallmouthBass = 1f;
 
         [Name("Bonus: Peanut Butter")]
-        [Description("Ratio for cal for Peanut Butter")]
+        [Description("Calories ratio for Peanut Butter")]
         [Slider(0, 6f, 51)]
         public float calPeanutButter = 1f;
 
@@ -149,8 +148,9 @@ namespace WarmFood
                 )
 
             {
-                 MelonLogger.Log(field.Name + " " + oldValue.ToString() + " " + newValue.ToString());
-               // preset = 3; // Custom
+                 // MelonLogger.Log(field.Name + " " + oldValue.ToString() + " " + newValue.ToString());
+                 // disabled as it was always showing "Custom" - will fix it latter
+                 // preset = 3; // Custom
             }
             //RefreshFields();
             // Call this method to make the newly set field values show up in the GUI!

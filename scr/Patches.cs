@@ -13,9 +13,6 @@ namespace WarmFood
         {
             Implementation.Buffs(__instance, normalizedValue);
 
-
-
-
         }
     }
     [HarmonyPatch(typeof(GearItem), "Awake", null)]

@@ -3,6 +3,7 @@ using Harmony;
 using MelonLoader;
 
 
+
 namespace WarmFood
 {
     internal class Implementation : MelonMod
@@ -21,13 +22,13 @@ namespace WarmFood
                 string name = gi.name.ToLower();
                 if (name.Contains("mre") && Settings.options.MREheating)
                 {
-
-                    // AccessTools.Field(typeof(FoodItem), "m_PreventHeatLoss").SetValue(gi, true);
-
                     // MelonLogger.Log(gi.m_FoodItem.m_CaloriesRemaining.ToString() + "   " + (gi.m_FoodItem.m_CaloriesTotal*(1-nV)).ToString() + "   " + nV);
                     if (Mathf.Abs(gi.m_FoodItem.m_CaloriesRemaining - gi.m_FoodItem.m_CaloriesTotal * (1 - nV))<1) //Initial selfheating
                     {
-                        if (gi.m_FreezingBuff == null) gi.m_FreezingBuff = new FreezingBuff();
+                        if (!gi.m_FreezingBuff)
+                        {
+                            gi.m_FreezingBuff = gi.gameObject.AddComponent<FreezingBuff>();
+                        }
                         gi.m_FreezingBuff.m_InitialPercentDecrease = 10f * Settings.options.MREBuffScale;
                         gi.m_FreezingBuff.m_RateOfIncreaseScale = 0.5f;
                         gi.m_FreezingBuff.m_DurationHours = 2f * Settings.options.MREBuffDuration;
@@ -57,24 +58,21 @@ namespace WarmFood
             if (gi.m_FoodItem)
             {
                 // Another ugly code
-                MelonLogger.Log(name + " from " + gi.m_FoodItem.m_CaloriesTotal + " " + gi.m_FoodItem.m_CaloriesRemaining);
+                // MelonLogger.Log(name + " from " + gi.m_FoodItem.m_CaloriesTotal + " " + gi.m_FoodItem.m_CaloriesRemaining);
                 if (name.Contains("meatbear"))
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calBear;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calBear;
-                    MelonLogger.Log(name + " ratio " + Settings.options.calBear);
                 }
                 else if (name.Contains("meatdeer"))
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calDeer;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calDeer;
-                    MelonLogger.Log(name + " ratio " + Settings.options.calDeer);
                 }
                 else if (name.Contains("meatrabbit"))
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calRabbit;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calRabbit;
-                    MelonLogger.Log(name + " ratio " + Settings.options.calRabbit);
                 }
                 else if (name.Contains("meatwolf"))
                 {
@@ -110,9 +108,8 @@ namespace WarmFood
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calPeanutButter;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calPeanutButter;
-                    MelonLogger.Log(name + " ratio " + Settings.options.calPeanutButter);
                 }
-                MelonLogger.Log(name + " to " + gi.m_FoodItem.m_CaloriesTotal + " " + gi.m_FoodItem.m_CaloriesRemaining);
+                // MelonLogger.Log(name + " to " + gi.m_FoodItem.m_CaloriesTotal + " " + gi.m_FoodItem.m_CaloriesRemaining);
             }
             
             if ((bool)gi.m_FoodItem && (gi.m_FoodItem.m_IsMeat || gi.m_FoodItem.m_IsFish))
@@ -124,26 +121,16 @@ namespace WarmFood
                     gi.m_FoodItem.m_PercentHeatLossPerMinuteOutdoors = 2f;
                     gi.m_FoodItem.m_HeatPercent = 100;
 
-                    if (gi.m_FreezingBuff == null) gi.m_FreezingBuff = new FreezingBuff();
+                    if (!gi.m_FreezingBuff)
+                    {
+                        gi.m_FreezingBuff = gi.gameObject.AddComponent<FreezingBuff>();
+                    }
                     gi.m_FreezingBuff.m_InitialPercentDecrease = 10f * Settings.options.MeatScale;
                     gi.m_FreezingBuff.m_RateOfIncreaseScale = 0.5f;
                     gi.m_FreezingBuff.m_DurationHours = 1f * Settings.options.MeatDuration;
                     // MelonLogger.Log(name + " buff " + gi.m_FreezingBuff.m_InitialPercentDecrease + " " + gi.m_FreezingBuff.m_DurationHours);
                 }
             }
-
-
-        }
-
-        internal static void SetCookable(GearItem gi,bool meat)
-        {
-
-            gi.m_Cookable.m_CookedPrefab = gi;
-            gi.m_Cookable.m_CookableType = Cookable.CookableType.Meat;
-            gi.m_Cookable.m_CookTimeMinutes = 15;
-            gi.m_Cookable.m_ReadyTimeMinutes = 10;
-            gi.m_Cookable.m_PutInPotAudio = "PLAY_ADDMEATPAN";
-            gi.m_Cookable.m_CookAudio = "Play_FryingHeavy";
 
 
         }
