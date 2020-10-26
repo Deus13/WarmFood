@@ -7,12 +7,13 @@ Also add a multiplier for the calories of meat and fish. For those of you how do
 
 Everthing customizable in the ModSettings.
 
+Bonus: ability to change calories for peanut butter (as is way too low).
+
 
 This is a mod for **The Long Dark** 1.83+ by Hinterland Games Studio, Inc.
 
 For 1.56 version, please see orignall by Deus13 - https://github.com/Deus13/WarmFood
 
 Know issues:
-* calories in cooking window are disaplyed with out vanilla (nofix)
+* calories in cooking window are disaplyed as vanilla (nofix)
 * changing calories in mod settings will not be reflected on current inventory until food will chnage state (eg cooked)
-* stacktrace when applied warmt buffer - buffer is still applied
