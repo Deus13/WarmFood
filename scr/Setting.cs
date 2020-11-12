@@ -201,7 +201,7 @@ namespace WarmFood
 
         }
     
-    internal void RefreshFields()
+		internal void RefreshFields()
         {
             if (MREheating == true)
             {

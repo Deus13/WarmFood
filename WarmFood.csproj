@@ -72,4 +72,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y "$(ProjectDir)bin\Debug\WarmFood.dll" "D:\Games\SteamLibrary\steamapps\common\TheLongDark\Mods\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

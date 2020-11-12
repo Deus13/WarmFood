@@ -35,5 +35,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: MelonModInfo(typeof(WarmFood.Implementation), "WarmFood", "2.2", "Deus13, ttr")]
+[assembly: MelonModInfo(typeof(WarmFood.Implementation), "WarmFood", "2.3", "Deus13, ttr")]
 [assembly: MelonModGame("Hinterland", "TheLongDark")]
