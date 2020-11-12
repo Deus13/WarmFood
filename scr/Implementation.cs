@@ -64,31 +64,26 @@ namespace WarmFood
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calBear;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calBear;
-                    gi.m_FoodWeight.m_CaloriesPerKG *= Settings.options.calBear;
                 }
                 else if (name.Contains("meatdeer"))
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calDeer;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calDeer;
-                    gi.m_FoodWeight.m_CaloriesPerKG *= Settings.options.calDeer;
                 }
                 else if (name.Contains("meatrabbit"))
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calRabbit;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calRabbit;
-                    gi.m_FoodWeight.m_CaloriesPerKG *= Settings.options.calRabbit;
                 }
                 else if (name.Contains("meatwolf"))
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calWolf;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calWolf;
-                    gi.m_FoodWeight.m_CaloriesPerKG *= Settings.options.calWolf;
                 }
                 else if (name.Contains("meatmoose"))
                 {
                     gi.m_FoodItem.m_CaloriesTotal *= Settings.options.calMoose;
                     gi.m_FoodItem.m_CaloriesRemaining *= Settings.options.calMoose;
-                    gi.m_FoodWeight.m_CaloriesPerKG *= Settings.options.calMoose;
                 }
                 else if (name.Contains("cohosalmon"))
                 {
