@@ -9,7 +9,8 @@ namespace WarmFood
     internal class Implementation : MelonMod
     {
 
-        public override void OnApplicationStart() {
+        public override void OnApplicationStart()
+        {
             Debug.Log($"[{InfoAttribute.Name}] Version {InfoAttribute.Version} loaded!");
             Settings.OnLoad();
 
@@ -23,7 +24,7 @@ namespace WarmFood
                 if (name.Contains("mre") && Settings.options.MREheating)
                 {
                     // MelonLogger.Log(gi.m_FoodItem.m_CaloriesRemaining.ToString() + "   " + (gi.m_FoodItem.m_CaloriesTotal*(1-nV)).ToString() + "   " + nV);
-                    if (Mathf.Abs(gi.m_FoodItem.m_CaloriesRemaining - gi.m_FoodItem.m_CaloriesTotal * (1 - nV))<1) //Initial selfheating
+                    if (Mathf.Abs(gi.m_FoodItem.m_CaloriesRemaining - gi.m_FoodItem.m_CaloriesTotal * (1 - nV)) < 1) //Initial selfheating
                     {
 
                         if (!gi.m_FreezingBuff)
@@ -39,12 +40,12 @@ namespace WarmFood
 
                         gi.m_FreezingBuff.Apply(nV);
                     }
-                    if(gi.m_FoodItem.IsHot())
+                    if (gi.m_FoodItem.IsHot())
                     {
                         gi.m_FreezingBuff.Apply(nV);
                     }
                 }
-                if(gi.m_FoodItem.m_IsMeat)
+                if (gi.m_FoodItem.m_IsMeat)
                 {
                     if (gi.m_FoodItem.IsHot())
                     {
@@ -139,7 +140,5 @@ namespace WarmFood
             }
 
         }
-
     }
-
 }

@@ -9,7 +9,7 @@ namespace WarmFood
     [HarmonyPatch(typeof(GearItem), "ApplyBuffs",new Type[] { typeof(float) })]
     internal static class GearItem_ApplyBuffs
     {
-        private static void Prefix(GearItem __instance, float normalizedValue)        //using Prefix to let the vanilla funtions still reduce willpower puration. altough on an starnge way were the realtime played is used for the calcs.  
+        private static void Prefix(GearItem __instance, float normalizedValue)        //using Prefix to let the vanilla funtions still reduce willpower puration. altough on an starnge way were the realtime played is used for the calcs.
         {
             Implementation.Buffs(__instance, normalizedValue);
 
@@ -25,8 +25,4 @@ namespace WarmFood
 
         }
     }
-
-
-
-
 }

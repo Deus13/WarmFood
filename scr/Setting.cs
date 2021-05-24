@@ -11,7 +11,7 @@ using System.Reflection;
 
 GEAR_RawMeatBear -> 1600 (game) => 1.78
 GEAR_RawMeatDeer -> 1160 (venison) => 1.28
-GEAR_RawMeatRabbit -> 1730 (venison) => 3.4 
+GEAR_RawMeatRabbit -> 1730 (venison) => 3.4
 GEAR_RawMeatWolf -> 1430 => 1.79
 GEAR_RawMeatMoose -> 1000 => 1.12
 GEAR_RawCohoSalmon -> 1780 => 5.91
@@ -138,7 +138,7 @@ namespace WarmFood
                 (field.Name == nameof(calBear)) ||
                 (field.Name == nameof(calDeer)) ||
                 (field.Name == nameof(calLakeWhite)) ||
-                (field.Name == nameof(calMoose)) || 
+                (field.Name == nameof(calMoose)) ||
                 (field.Name == nameof(calPeanutButter)) ||
                 (field.Name == nameof(calRabbit)) ||
                 (field.Name == nameof(calRainbowTrout)) ||
@@ -188,7 +188,7 @@ namespace WarmFood
                 case 2:
                     calBear = 1.6f; // reduced
                     calDeer = 1.20f; // reduced
-                    calLakeWhite = 2.17f; // 70% 
+                    calLakeWhite = 2.17f; // 70%
                     calMoose = 1.12f; // 100%
                     calRabbit = 1.7f; // 50%
                     calRainbowTrout = 2.56f; // 70%
@@ -200,7 +200,7 @@ namespace WarmFood
             }
 
         }
-    
+
 		internal void RefreshFields()
         {
             if (MREheating == true)
