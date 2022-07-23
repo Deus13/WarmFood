@@ -1,3 +1,5 @@
+Future sucesoor and much more advanced mod - https://github.com/GruffCassquatch/FoodTweaker
+
 # Warm Food
 
 Originall by Deus13, TLD update by ttr.
